@@ -1,0 +1,22 @@
+/*Elements*/
+
+/*Classes*/
+
+.game-container {
+    height: 1000px;
+    width: 1000px;
+    background-color: aqua;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.card {
+    height: calc(100%-16px);
+    width: (100%-16px);
+    background-color:antiquewhite;
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 16px;
+    position: relative;
+}
