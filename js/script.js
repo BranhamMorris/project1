@@ -20,8 +20,6 @@ function YouTubeApiCall(YouTubeApiKey) {
     })
     }
 
-<<<<<<< HEAD
-=======
 
 
     YouTubeApiCall(YouTubeApiKey);
@@ -51,12 +49,6 @@ switchBtnEl.on("click",function(event){
     randomBackground()});
     
     
-       
-
-    
-   
-  
->>>>>>> 3adca185754b5c7c710e64e8c7ede85c0720819b
 YouTubeApiCall(YouTubeApiKey);
 
 // daily inspirational quotes API
@@ -71,9 +63,5 @@ const options = {
 fetch('https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info', options)
 	.then(response => response.json())
 	.then(response => console.log(response))
-<<<<<<< HEAD
-	.catch(err => console.error(err));
-=======
 	.catch(err => console.error(err));
 
->>>>>>> 3adca185754b5c7c710e64e8c7ede85c0720819b
