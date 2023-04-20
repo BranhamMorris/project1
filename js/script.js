@@ -1,11 +1,12 @@
 //YouTube API call explore data explaining random method
 
 var btnApiCallEl = $("#call-api");
-
+var eduVideosContainer = $("#edu-coding-topics");
 
 function youTubeApiCall() {
 
-    var youTubeApiKey = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTNXca5Zhdc0uoAHGMGOEiw&key=AIzaSyBivby0lJQWzk_xXjxxkxUjgMlfy65cbbM";
+
+    var youTubeApiKey = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTNXca5Zhdc0uoAHGMGOEiw&maxResults=40&key=AIzaSyBivby0lJQWzk_xXjxxkxUjgMlfy65cbbM";
 
     fetch(youTubeApiKey)
     .then (function (response) {
@@ -13,30 +14,33 @@ function youTubeApiCall() {
             response.json()
             .then (function(data){
                 console.log(data);
-                // DisplayRandomMethodeVideo(data);
+                displayEduVideos(data);
             })
         }
-        
+
         else {
             alert("404 Error: could not find");
         }
     })
     }
 
+
+    function displayEduVideos(data) {
+        for (var  i=0; i<data.items.length; i++) {
+        var title = data.items[i].snippet.title;
+        console.log(title);
+        var videoId = data.items[i].id.videoId;
+            if (title == "Creating Random Numbers in JavaScript" || title == "The Anatomy Of HTML Tags" || title == "Learn Headings in HTML"){
+                var iframeEl = $("<iframe>").attr("class", "youtube-player video-container edu-videos").attr("id","player").attr("type", "text/html").attr("style", "width:300px height:150px").attr("src", "http://www.youtube.com/embed/" + videoId);
+                eduVideosContainer.append(iframeEl);
+                }
+            }}
+
     btnApiCallEl.on("click", function(){
         youTubeApiCall();
     });
     
 
-    // function DisplayRandomMethodeVideo (data){
-    //         $("<iframe>").attr("class", "youtube-player video-container").attr("id","player").attr("type", "text/html").attr("src", "http://www.youtube.com/embed/" + i);
-    // }
-
-
-    
-
-//YouTube API call exploring data regarding css color and background color choice    
-    
 
 // background color generator component
 
@@ -56,6 +60,8 @@ switchBtnEl.on("click",function(event){
     event.preventDefault();
     randomBackground()});
     
+
+
 
 // daily inspirational quotes API
 const options = {
