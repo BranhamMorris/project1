@@ -63,17 +63,27 @@ switchBtnEl.on("click",function(event){
 
 
 
-// daily inspirational quotes API
+//motivational quotes API
 const options = {
 	method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '0d368c3e96mshe093caf1191f67bp18aea8jsn204c186e106d',
-		'X-RapidAPI-Host': 'quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com'
+		'X-RapidAPI-Host': 'motivational-quotes-quotable-api.p.rapidapi.com'
 	}
 };
 
-fetch('https://quotes-inspirational-quotes-motivational-quotes.p.rapidapi.com/quote?token=ipworld.info', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+fetch('https://motivational-quotes-quotable-api.p.rapidapi.com/motivational_quotes', options)
+.then (function (response) {
+    if (response.ok){
+        response.json()
+        .then (function(data){
+            console.log(data);
+            var quote = data.quote
+            var quoteEl = $("#quote").text(quote);
+        })
+    }
 
+    else {
+        alert("404 Error: could not find");
+    }
+})
