@@ -1,13 +1,12 @@
 //YouTube API call explore data explaining random method
 
-var btnApiCallEl = $("#call-api");
 var eduVideosContainer = $("#edu-coding-topics").attr("class" , "col p-12 g-4 py-5 row-col-1 row-col-md-2");
 
 
 function youTubeApiCall() {
 
 
-    var youTubeApiKey = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTNXca5Zhdc0uoAHGMGOEiw&maxResults=40&key=AIzaSyBivby0lJQWzk_xXjxxkxUjgMlfy65cbbM";
+    var youTubeApiKey = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTNXca5Zhdc0uoAHGMGOEiw&maxResults=40&key=AIzaSyBmXIYgbfQymw5bPQbNaSaPkJucq1Ld5Do";
 
 
     fetch(youTubeApiKey)
@@ -15,7 +14,6 @@ function youTubeApiCall() {
         if (response.ok){
             response.json()
             .then (function(data){
-                console.log(data);
                 displayEduVideos(data);
             })
         }
@@ -39,11 +37,7 @@ function youTubeApiCall() {
                 resourcesEl.append(eduVideosContainer);
                 }
             }}
-    
-        btnApiCallEl.on("click", function(){
-            youTubeApiCall();
-        });
-    
+            youTubeApiCall()
 
 
 // background color generator component
