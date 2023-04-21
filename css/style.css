@@ -3,14 +3,56 @@
     
 }
 
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+section {
+    margin-bottom: 10px;
+}
+
 #vision {
     color: black;
     text-align: center;
     
 }
+h2 {
+    text-align: center;
+}
+
 
 #quote {
     color: red;
     text-align: center;
     font-size:larger;
 }
+
+pre {
+    text-align: center;
+}
+
+#color-generator-container {
+    height: 262px;
+    width: 100%;
+    }
+    
+    .function-random {
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+        font-weight: 600;
+        
+    }
+    
+    .btn {
+        position: relative;
+        top: 40%;
+        left:5%;
+    }
+    
+    #resources {
+        grid-template-columns: repeat(4,1fr);
+    }
+
+
