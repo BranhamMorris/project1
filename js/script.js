@@ -1,12 +1,14 @@
 //YouTube API call explore data explaining random method
 
 var btnApiCallEl = $("#call-api");
-var eduVideosContainer = $("#edu-coding-topics");
+var eduVideosContainer = $("#edu-coding-topics").attr("class" , "col p-12 g-4 py-5 row-col-1 row-col-md-2");
+
 
 function youTubeApiCall() {
 
 
     var youTubeApiKey = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCTNXca5Zhdc0uoAHGMGOEiw&maxResults=40&key=AIzaSyBivby0lJQWzk_xXjxxkxUjgMlfy65cbbM";
+
 
     fetch(youTubeApiKey)
     .then (function (response) {
@@ -30,15 +32,17 @@ function youTubeApiCall() {
         var title = data.items[i].snippet.title;
         console.log(title);
         var videoId = data.items[i].id.videoId;
-            if (title == "Creating Random Numbers in JavaScript" || title == "The Anatomy Of HTML Tags" || title == "Learn Headings in HTML"){
-                var iframeEl = $("<iframe>").attr("class", "youtube-player video-container edu-videos").attr("id","player").attr("type", "text/html").attr("style", "width:300px height:150px").attr("src", "http://www.youtube.com/embed/" + videoId);
+            if (title == "Creating Random Numbers in JavaScript" || title == "The Anatomy Of HTML Tags" || title == "Learn Headings in HTML" || title == "Understanding Modulo In JavaScript | %"){
+                var iframeEl = $("<iframe>").attr("class", "youtube-player video-container edu-videos").attr("id","player").attr("type", "text/html").attr("style", "width:100% height:150px").css("margin","4px").attr("src", "http://www.youtube.com/embed/" + videoId);
                 eduVideosContainer.append(iframeEl);
+                var resourcesEl = $("#resources").attr("class", "container");
+                resourcesEl.append(eduVideosContainer);
                 }
             }}
-
-    btnApiCallEl.on("click", function(){
-        youTubeApiCall();
-    });
+    
+        btnApiCallEl.on("click", function(){
+            youTubeApiCall();
+        });
     
 
 
