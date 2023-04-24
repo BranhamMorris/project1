@@ -85,3 +85,56 @@ fetch('https://motivational-quotes-quotable-api.p.rapidapi.com/motivational_quot
         alert("404 Error: could not find");
     }
 })
+
+//Memory Card Game---------------------------------------------------------------------------------//
+
+    //Card Flip Function//
+
+    //Making list of all cards and storing the value//
+    var cards = document.querySelectorAll(".card")                  
+    //determining if it is the first or second click for the pairing//
+    var flippedCard = false;                                        
+    var firstCard, secondCard;   
+    //locks the board so only a pair of cards can be selected//                                   
+    var locked = false;                                             
+    
+    //Assigning how the function of flipping a card will work//
+    function flipCard() {
+        if (locked) return;
+        //add flip to every card class with "this"//
+        this.classList.add("flip");  
+        //statement for first click, sets firstCard to card class(this)//                               
+        if (!flippedCard) {                                          
+            flippedCard = true;
+            firstCard = this;
+        //second click//
+        } else {
+            flippedCard = false;
+            secondCard = this;
+            //Matching cards, gave each desired pair of card class a data id, if when 2 cards are clicked and they have same value then they are removed from list(removeEventListener)//
+            if (firstCard.dataset.id === secondCard.dataset.id) {
+                firstCard.removeEventListener("click", flipCard);
+                secondCard.removeEventListener("click", flipCard);
+            //If its not a match then the cards are flipped back over by removing the flip with (removeEventListener)//
+            } else {
+                locked = true;
+                setTimeout(() => {
+                    firstCard.classList.remove("flip");
+                    secondCard.classList.remove("flip");
+                    locked = false;
+                }, 2000)
+                
+            }
+            
+        }
+    }
+    //Function mix the cards up as someone enters the site using IIFE immediately invoked function expression//
+    (function mixing() {
+        cards.forEach(card => {
+            var assigningCards = Math.floor(Math.random() * 16);
+            card.style.order = assigningCards;
+        });
+    })();
+    
+    //looping through each card(addEventListener) looking a click and when that happens it will flip the card//
+    cards.forEach(card => card.addEventListener("click", flipCard));  
