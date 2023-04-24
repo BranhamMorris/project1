@@ -1,22 +1,126 @@
+.sortable {
+    width: 400px;
+    
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+section {
+    margin-bottom: 10px;
+}
+
+#vision {
+    color: black;
+    text-align: center;
+    
+}
+h2 {
+    text-align: center;
+}
+
+
+#quote {
+    color: red;
+    text-align: center;
+    font-size:larger;
+}
+
+pre {
+    text-align: center;
+}
+
+#color-generator-container {
+    height: 262px;
+    width: 100%;
+    }
+    
+    .function-random {
+        border: 2px solid black;
+        padding: 10px;
+        text-align: center;
+        font-weight: 600;
+        
+    }
+    
+    .btn {
+        position: relative;
+        top: 40%;
+        left:5%;
+    }
+    
+    #resources {
+        grid-template-columns: repeat(4,1fr);
+    }
+
 /*Elements*/
 
-/*Classes*/
+    img {
+        width:100%;
+        height:100%;
+    }
+    
+    /*Classes*/
+    
+    .game-container {
+        height: 800px;
+        width: 800px;
+        display: grid;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(4,1fr);
+        perspective: 800px;
+    }
+    
+    .card {
+        height: calc(25%-16px);
+        width: calc(25%-16px);
+        margin: 8px;
+        text-align: center;
+        border-radius: 16px;
+        position: relative;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        transform: scale(1);
+        transition: transform 500ms;
+    }
+    
+    .card:active {
+        transition: transform 100ms;
+        transform: scale(.95);
+    }
+    
+    .card img {
+        object-fit: scale-down;
+    }
+    
+    .card.flip {
+        transform: rotateY(180deg);
+        background-color: rgb(253, 252, 250);
+        border: black 2px solid;
+    }
+    
+    .front-card,
+    .back-card {
+        height:100%;
+        width:100%;
+        position:absolute;
+        border-radius: 16px;
+        backface-visibility: hidden;
+    }
+    
+    .front-card {
+        background-image: url(./images/Cube-Image_184x184.jpg);
+        object-fit: scale-down;
+        z-index: 1;
+       
+        transform:rotateY(180deg)
+    }
+    
+    
+    .back-card {
+       background-color: azure;
+       border: black 2px solid;
+    }
 
-.game-container {
-    height: 1000px;
-    width: 1000px;
-    background-color: aqua;
-    display: grid;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(4,1fr);
-}
-
-.card {
-    height: calc(100%-16px);
-    width: (100%-16px);
-    background-color:antiquewhite;
-    margin: 8px;
-    border: 2px solid black;
-    border-radius: 16px;
-    position: relative;
-}
