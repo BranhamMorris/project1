@@ -86,6 +86,7 @@ fetch('https://motivational-quotes-quotable-api.p.rapidapi.com/motivational_quot
     }
 })
 
+
 //Memory Card Game---------------------------------------------------------------------------------//
 
     //Card Flip Function//
@@ -138,3 +139,4 @@ fetch('https://motivational-quotes-quotable-api.p.rapidapi.com/motivational_quot
     
     //looping through each card(addEventListener) looking a click and when that happens it will flip the card//
     cards.forEach(card => card.addEventListener("click", flipCard));  
+
